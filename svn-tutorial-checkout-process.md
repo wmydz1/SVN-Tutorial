@@ -1,11 +1,12 @@
 #SVN - 检出过程
-SVN提供了 *checkout* 命令来从版本库检出一个工作副本。下面的命令将会在当前工作副本中创建一个名为 *project_repo* 的文件夹。不用担心版本库的 URL，大部分时间里，SVN 管理员会提供给你它的访问权限的。
+
+SVN提供了 *checkout* 命令来从版本库检出一个工作副本。下面的命令将会在当前工作副本中新建一个名为 *project_repo* 的文件夹。不用担心版本库的 URL，大部分时间里，SVN 管理员会提供给你它的访问权限的。
 
 ```
 [tom@CentOS ~]$ svn checkout http://svn.server.com/svn/project_repo --username=tom
 ```
 
-上面的命令将会产生如下结果：
+以上命令将产生如下结果：
 
 ```
 A    project_repo/trunk
@@ -23,7 +24,7 @@ Checked out revision 1.
 [tom@CentOS trunk]$ svn info
 ```
 
-上面的命令将会产生如下结果：
+以上命令将产生如下结果：
 
 ```
 Path: .
