@@ -1,5 +1,5 @@
 #SVN 安装
-Subversion 是一个受欢迎的开源的版本控制工具。他是开源并且在互联网免费提供。大多数 GNU/Linux 发行版系统自带，所以它很有可能已经安装在你的系统上了。检查是否安装了可以使用下面命令。  
+Subversion 是一个受欢迎的开源的版本控制工具。他在互联网免费提供并且开源。大多数 GNU/Linux 发行版系统自带，所以它很有可能已经安装在你的系统上了。可以使用下面命令检查是否安装了。  
 
 ```
 [jerry@CentOS ~]$ svn --version
@@ -36,8 +36,8 @@ compiled Jun 21 2013, 22:11:49
 ```  
 
 #Apache 安装  
-我们已经看到如何安装 SVN 客户端到 GNU/Linux 上，让我们看看如何创建一个新的仓库让使用者们访问。  
-在服务器上我们必须安装 Apache httpd 模块和 svnadmin 工具。subversion 从 `/etc/httpd/conf.d/subversion.conf` 读取配置文件， subversion.conf 看起来像这样   
+我们已经看到如何将 SVN 客户端安装到 GNU/Linux 上，让我们看看如何创建一个新的版本库让使用者们访问。  
+我们必须必须在服务器上安装 Apache httpd 模块和 svnadmin 工具。subversion 从 `/etc/httpd/conf.d/subversion.conf` 读取配置文件， subversion.conf 看起来像这个样子 
  
 ```
 LoadModule dav_svn_module     modules/mod_dav_svn.so
@@ -53,7 +53,7 @@ LoadModule authz_svn_module   modules/mod_authz_svn.so
 </Location>
 ```    
 
-让我们创建 Subversion 用户，授权他们访问仓库，`htpasswd` 命令用于创建和更新用来保存用户名和密码的纯文本文件给 HTTP 用户提供基本身份认证。`-c` 选项创建一个密码文件，如果密码文件已经存在了，它将会被覆盖。这就是为什么 `-c` 只在第一次使用。`-m` 选项用于设置是否启用 MD5 加密密码。  
+让我们创建 Subversion 用户，授权他们访问版本库，`htpasswd` 命令用于创建和更新用来保存用户名和密码的纯文本文件给 HTTP 用户提供基本身份认证。`-c` 选项创建一个密码文件，如果密码文件已经存在了，它将会被覆盖。这就是为什么 `-c` 只在第一次使用。`-m` 选项用于设置是否启用 MD5 加密密码。  
 
 #用户安装
 让我们创建 tom   
@@ -80,8 +80,8 @@ Adding password for user jerry
 [root@CentOS ~]# cd /var/www/svn/
 ```
 
-#仓库安装  
-创建一个名为 project_repo 的仓库。`svnadmin` 命令用于创建一个新的仓库和一些其他目录保存数据。  
+#版本库安装  
+创建一个名为 project_repo 的版本库。`svnadmin` 命令用于创建一个新的版本库和一些其他目录保存数据。  
 
 ```
 [root@CentOS svn]# svnadmin create project_repo
@@ -95,7 +95,7 @@ drwxr-xr-x. 2 root root 4096 Aug  4 22:30 hooks
 drwxr-xr-x. 2 root root 4096 Aug  4 22:30 locks
 -rw-r--r--. 1 root root  229 Aug  4 22:30 README.txt
 ```
-让我们更改仓库的用户和组所有权。  
+让我们更改版本库的用户和组所有权。  
 
 ```
 [root@CentOS svn]# chown -R apache.apache project_repo/
@@ -134,7 +134,7 @@ httpd: Could not reliably determine the server's fully qualified domain name, us
 httpd (pid  1372) is running...
 [root@CentOS svn]#
 ```
-我们已经成功配置好了 Apache 服务器，现在我们将配置仓库，使用默认的授权文件给可信的用户访问，添加下列几行到 `roject_repo/conf/svnserve.conf` 文件。
+我们已经成功配置好了 Apache 服务器，现在我们将配置版本库，使用默认的授权文件给可信的用户访问，添加下列几行到 `roject_repo/conf/svnserve.conf` 文件。
 
 ```
 anon-access = none
@@ -146,7 +146,7 @@ authz-db = authz
 
 分支目录用于追求不同的开发方向。  
 
-让我们在项目仓库底下创建主干，标签，分支结构。
+让我们在项目版本库底下创建主干，标签，分支结构。
 
 ```
 [root@CentOS svn]# mkdir /tmp/svn-template
@@ -164,7 +164,7 @@ Adding         /tmp/svn-template/tags
 Committed revision 1.
 [root@CentOS svn]#
 ```
-完成了！我们已经成功创建仓库并允许 Tom 和 Jerry 访问，从现在开始他们可以所有仓库支持的操作了。
+完成了！我们已经成功创建版本库并允许 Tom 和 Jerry 访问，从现在开始他们可以所有版本库支持的操作了。
 
 
 
