@@ -1,4 +1,4 @@
-#SVN 安装
+# SVN 安装
 Subversion 是一个受欢迎的开源的版本控制工具。他在互联网免费提供并且开源。大多数 GNU/Linux 发行版系统自带，所以它很有可能已经安装在你的系统上了。可以使用下面命令检查是否安装了。  
 
 ```
@@ -35,7 +35,7 @@ svn, version 1.7.5 (r1336830)
 compiled Jun 21 2013, 22:11:49
 ```  
 
-#Apache 安装  
+# Apache 安装  
 我们已经看到如何将 SVN 客户端安装到 GNU/Linux 上，让我们看看如何创建一个新的版本库让使用者们访问。  
 我们必须必须在服务器上安装 Apache httpd 模块和 svnadmin 工具。subversion 从 `/etc/httpd/conf.d/subversion.conf` 读取配置文件， subversion.conf 看起来像这个样子 
  
@@ -55,7 +55,7 @@ LoadModule authz_svn_module   modules/mod_authz_svn.so
 
 让我们创建 Subversion 用户，授权他们访问版本库，`htpasswd` 命令用于创建和更新用来保存用户名和密码的纯文本文件给 HTTP 用户提供基本身份认证。`-c` 选项创建一个密码文件，如果密码文件已经存在了，它将会被覆盖。这就是为什么 `-c` 只在第一次使用。`-m` 选项用于设置是否启用 MD5 加密密码。  
 
-#用户安装
+# 用户安装
 让我们创建 tom   
 
 ```
@@ -80,7 +80,7 @@ Adding password for user jerry
 [root@CentOS ~]# cd /var/www/svn/
 ```
 
-#版本库安装  
+# 版本库安装  
 创建一个名为 project_repo 的版本库。`svnadmin` 命令用于创建一个新的版本库和一些其他目录保存数据。  
 
 ```
